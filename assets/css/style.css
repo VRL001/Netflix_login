@@ -1,57 +1,66 @@
 body {
     padding: 0;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
-    background-image: url(../img/background.jpg);
-    background-image: cover;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Overlay escuro */
 body::before {
     content: '';
-    background-color: rgb(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    height: 100%;
-    position: absolute;
+    min-height: 100%;
+    position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.logo img {
-    height: 45px;
-    width: 167px;
-}
-
+/* Header */
 .header {
     padding: 20px 50px;
     position: relative;
     z-index: 10;
 }
 
-.login_body {
-    padding: 60px;
-    z-index: 90;
-    position: relative;
-    max-width: 450px;
-    height: 550px;
-    margin-left: 50%;
-    background-color: rgb(0, 0, 0, 0.75);
-    border-radius: 10px;
-    box-sizing: border-box;
-    transform: translateX(-50%);
+.logo img {
+    height: 45px;
+    width: 167px;
+    object-fit: contain;
 }
 
+/* Área de login */
+.login_body {
+    padding: 60px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    min-height: 550px;
+    margin: 20px auto 50px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Título */
 .login_body h2 {
     font-size: 32px;
     color: #fff;
     margin-top: 0;
+    margin-bottom: 30px;
 }
 
+/* Inputs */
 .login_body input {
     height: 50px;
     width: 100%;
@@ -59,12 +68,14 @@ body::before {
     background-color: #333;
     border: none;
     border-radius: 5px;
-    padding-left: 15px;
+    padding: 0 15px;
     box-sizing: border-box;
     outline: none;
+    font-size: 16px;
 }
 
-.login_body input:hover {
+.login_body input:hover,
+.login_body input:focus {
     background-color: #444;
 }
 
@@ -72,6 +83,7 @@ body::before {
     margin-bottom: 25px;
 }
 
+/* Botão */
 .login_body button {
     height: 50px;
     width: 100%;
@@ -82,6 +94,7 @@ body::before {
     font-size: 16px;
     border: none;
     margin-bottom: 10px;
+    transition: background-color 0.2s ease;
 }
 
 .login_body button:hover {
@@ -89,12 +102,14 @@ body::before {
     cursor: pointer;
 }
 
+/* Suporte */
 .support {
     display: flex;
     color: #b3b3b3;
     justify-content: space-between;
+    align-items: center;
     font-size: 12px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .support input {
@@ -110,6 +125,8 @@ body::before {
 .remember span {
     margin-right: 5px;
     height: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .help a {
@@ -121,11 +138,13 @@ body::before {
     text-decoration: underline;
 }
 
+/* Facebook */
 .login_facebook {
     display: flex;
     align-items: center;
     width: 100%;
     color: #737373;
+    margin-top: 20px;
 }
 
 .login_facebook span {
@@ -138,9 +157,15 @@ body::before {
     color: #737373;
 }
 
+.login_facebook span a:hover {
+    text-decoration: underline;
+}
+
+/* Cadastro */
 .sign_up {
     color: #737373;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 .sign_up a {
@@ -153,9 +178,12 @@ body::before {
     text-decoration: underline;
 }
 
+/* Termos */
 .terms {
     color: #737373;
     font-size: 13px;
+    line-height: 1.5;
+    margin-top: 20px;
 }
 
 .terms a {
@@ -165,4 +193,143 @@ body::before {
 
 .terms a:hover {
     text-decoration: underline;
+}
+
+
+/* ==========================================
+   TABLET
+   768px até 1024px
+   ========================================== */
+
+@media (max-width: 1024px) {
+
+    .header {
+        padding: 20px 35px;
+    }
+
+    .logo img {
+        height: 40px;
+        width: auto;
+    }
+
+    .login_body {
+        max-width: 430px;
+        padding: 50px;
+        margin-top: 30px;
+    }
+
+    .login_body h2 {
+        font-size: 30px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR
+   Até 767px
+   ========================================== */
+
+@media (max-width: 767px) {
+
+    body {
+        min-height: 100vh;
+        background-position: center;
+        background-attachment: scroll;
+    }
+
+    .header {
+        padding: 20px 25px;
+    }
+
+    .logo img {
+        height: 35px;
+        width: auto;
+    }
+
+    .login_body {
+        width: calc(100% - 30px);
+        max-width: none;
+        min-height: auto;
+        padding: 35px 25px;
+        margin: 20px auto 30px;
+        border-radius: 8px;
+    }
+
+    .login_body h2 {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    .login_body input {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    .input_box {
+        margin-bottom: 20px;
+    }
+
+    .login_body button {
+        height: 48px;
+        font-size: 15px;
+    }
+
+    .support {
+        font-size: 11px;
+    }
+
+    .login_facebook span {
+        font-size: 12px;
+    }
+
+    .sign_up {
+        font-size: 14px;
+    }
+
+    .sign_up a {
+        font-size: 14px;
+    }
+
+    .terms {
+        font-size: 12px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR PEQUENO
+   Até 400px
+   ========================================== */
+
+@media (max-width: 400px) {
+
+    .header {
+        padding: 15px 20px;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    .login_body {
+        width: calc(100% - 20px);
+        padding: 30px 20px;
+        margin-top: 15px;
+    }
+
+    .login_body h2 {
+        font-size: 24px;
+    }
+
+    .login_body input {
+        height: 46px;
+    }
+
+    .login_body button {
+        height: 46px;
+    }
+
+    .support {
+        font-size: 10px;
+    }
 }
